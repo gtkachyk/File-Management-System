@@ -3,6 +3,55 @@ The file management system is a set of rules and guidelines for managing digital
 It contains two connected subsystems: a system for organizing files and a system for backing up files.<br>
 This document is a guide for setting up your file management system and documentation to reference when maintaining it.
 
+## Contents
+- [SETUP GUIDE](#setup-guide)
+  - [IDENTIFY SYSTEM DEVICES](#identify-system-devices)
+  - [ADDING SETUP FILES](#adding-setup-files)
+  - [ORGANIZING YOUR FILES](#organizing-your-files)
+    - [IDENTIFYING DEFAULT DIRECTORIES](#identifying-default-directories)
+    - [CREATING CUSTOM DIRECTORIES](#creating-custom-directories)
+  - [BACKING UP YOUR FILES](#backing-up-your-files)
+    - [IDENTIFY SYSTEM DATA](#identify-system-data)
+    - [ALLOCATING STORAGE SPACE](#allocating-storage-space)
+    - [CREATING YOUR BASE COPY](#creating-your-first-copy-of-system-data)
+    - [FILLING UNUSED SPACE](#filling-unused-space)
+      - [ADDING FULL COPIES](#adding-full-copies)
+      - [ADDING PARTIAL COPIES](#adding-partial-copies)
+      - [ADDING TO PARTIAL COPIES](#add-to-partial-copies)
+  - [MAINTAINING YOUR NETWORK](#maintaining-your-network)
+- [DOCUMENTATION](#documentation)
+  - [ADD FULL COPY ALGORITHM](#add-full-copy-algorithm)
+  - [ADD PARTIAL COPY ALGORITHM](#add-partial-copy-algorithm)
+  - [ADD TO PARTIAL COPY ALGORITHM](#add-to-partial-copy-algorithm)
+  - [ARCHIVE INSTANCE](#archive-instance)
+  - [BASE COPY](#base-copy)
+  - [BREAKAWAY COPY](#breakaway-copy)
+  - [CUSTOM DIRECTORIES](#custom-directories)
+    - [BACKUP-STORAGE](#backup-storage)
+    - [STORAGE-EXTENSION](#storage-extension)
+    - [FILE-MANAGEMENT-SYSTEM](#file-management-system-1)
+      - [GLOBAL](#global)
+      - [INSTANCE-INFORMATION](#instance-information)
+      - [SAVE](#save)
+      - [WRITABLE-DIRECTORIES](#writable-directories)
+  - [DEFAULT DIRECTORIES](#default-directories)
+  - [DEVICES](#devices)
+    - [STANDARD DEVICES](#standard-devices)
+    - [SIMPLE DEVICES](#simple-devices)
+  - [DOCUMENTATION FILE](#documentation-file)
+  - [FILE MANAGEMENT SYSTEM](#file-management-system-2)
+  - [FILE MANAGEMENT SYSTEM INSTANCE](#file-management-system-instance)
+  - [FILL UNUSED SPACE ALGORITHM](#fill-unused-space-algorithm)
+  - [FOLDER TRACKING DIRECTORIES](#folder-tracking-directories)
+  - [INSTANCE NETWORKS](#instance-networks)
+  - [INSTANCE CONTAINER DIRECTORY](#instance-container-directory)
+  - [INSTANCE PRESERVATION DIRECTORIES](#instance-preservation-directories)
+  - [INSTANCE TRACKING DIRECTORIES](#instance-tracking-directories)
+  - [NETWORK REFRESH ALGORITHM](#network-refresh-algorithm)
+  - [PLACEHOLDERS](#placeholders)
+  - [STALE FOLDER](#stale-folder)
+  - [USER CONTROLLED FILES AND FOLDERS](#user-controlled-file--user-controlled-folder)
+
 # Setup Guide
 ## Identify System Devices
 Identify every device you use that meets one or more of the following criteria:
@@ -11,7 +60,7 @@ Identify every device you use that meets one or more of the following criteria:
 - You want to store backups on the device
 These will be referred to as your system devices.
 
-## Add Setup Files
+## Adding Setup Files
 From your system devices, select the device you use most or the device that is easiest to access.<br>
 This will be referred to as your controller device.
 On your controller device:
@@ -58,7 +107,8 @@ The purpose of an instance network is to facilitate coordinated data storage acr
 Moving forward, we will no longer need to concept of 'system devices'.<br>
 Instead, the instructions will refer to your 'instance network', its 'controller instance', and its 'standard instances'.
 
-## Organizing Your Files Part One
+## Organizing Your Files
+### Identifying Default Directories
 For this next part, you will need to be familiar with the following terminology:
 - The 'top level' of an instance is the location in which its File-Management-System folder is stored.
 - A file or folder 'F' in a directory 'D' is a user controlled file if every directory in the path of 'F' after 'D' was created by you.
@@ -83,7 +133,7 @@ For each instance in your network:
   - Create a file in it called README.md and write in it: 'The purpose of this folder is to temporarily store downloaded files until they can be stored elsewhere.'
   - In File-Management-System/Writable-Directories, create a shortcut to Downloads.
 
-## Adding Concepts
+### Adding Concepts
 The folders 'F' that you just identified are called 'default directories'.<br>
 The folders 'Protected-F' that you just created are called 'custom directories'.
 
@@ -96,7 +146,7 @@ This will be especially useful if you want to create backup copies of your data.
 The third purpose is to further artificially restrict your activity.<br>
 The expectation from this point on is that you will avoid modifying files and folders outside of custom directories whenever possible.
 
-## Organizing Your Files Part Two
+### Creating Custom Directories
 In this section, you will create more custom directories to clean up your instance network.<br>
 For the best results, adhere to the custom directory principles and strictly follow the custom directory rules, all of which can be found [here](#custom-directories).
 
@@ -138,7 +188,7 @@ For each instance 'I' in your network:
     - There is no official procedure for fixing this, as it should not happen if you follow the [custom directory rules](#rules-1).
   - In your network's controller instance, create a [placeholder](#placeholders) for 'F' and add it to File-Management-System/Global/I/Save.
 
-### Allocate Storage Space
+### Allocating Storage Space
 The next step is to figure out where you want to store back up copies of system data.
 
 For each instance 'I' in your network:
@@ -155,7 +205,7 @@ If an instance stores part of a copy of system data, its copy id will be shared 
 The controller instance of a network knows the copy id of every instance in its network and which system data folders each instance stores.<br>
 This allows you to use your controller to analyze the state of each copy in your network before you make any modifications.
 
-### 'Create' Your First Copy of System Data
+### 'Creating' Your First Copy of System Data
 Your instance network already contains a full copy of system data stored at the top level of one or more instances.
 This is called your network's 'base copy'.
 
